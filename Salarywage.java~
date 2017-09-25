@@ -1,0 +1,14 @@
+public class Salary {                         
+
+   public static void main (String [] args) { 
+      int hourlyWage = 0;       
+                   
+      System.out.print("What is your hourly wage: ");    
+      hourlyWage = scnr.nextInt();
+      System.out.println(hourlyWage);   
+    
+
+
+      return;
+   } 
+}

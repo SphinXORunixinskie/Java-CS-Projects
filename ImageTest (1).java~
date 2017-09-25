@@ -1,0 +1,50 @@
+// This program converts a image to grayscale, and displays original and
+// grayscale version.  
+// The image dimension is reduced such that the longest side is no larger
+// than 300 cells.  
+
+import java.awt.Color;
+import java.util.Scanner;
+
+public class ImageTest
+{
+  public static void main(String[] args)
+  {
+    Scanner input = new Scanner(System.in);
+    
+    System.out.print("Input the name of the image with the extension (must be in the directory): ");
+    String fileName = input.next();
+    
+    Board orig = new Board(fileName);
+    Board b = new Board(fileName);
+    
+    // Get the image dimensions
+    int cols = b.getCols();
+    int rows = b.getRows();
+    
+    for (int y = 0; y < rows; y++)
+    {
+      for (int x = 0; x < cols; x++)
+      {
+        // obtain the color for cell (x, y)
+        Color c = b.getColor(x,y);
+        
+        // Obtain the RGB components
+        int red = c.getRed();
+        int green = c.getGreen();
+        int blue = c.getBlue();
+        
+        // Average the RGB components to compute grayscale value
+        int avg =  (red+green+blue)/3;
+        
+        // Create new color object with grayscale values
+        Color grayScale = new Color(avg, avg, avg);
+        
+        // Fill the cell with new shade
+        b.fillCell(x, y, grayScale);
+        
+      }
+    }
+  }
+  
+}
